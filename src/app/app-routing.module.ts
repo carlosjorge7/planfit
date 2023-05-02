@@ -20,6 +20,12 @@ const routes: Routes = [
     ...canActivate(() => redirectUnauthorizedTo(['/home'])),
   },
   {
+    path: 'trainings',
+    loadChildren: () =>
+      import('./trainings/trainings.module').then((m) => m.TrainingsPageModule),
+    ...canActivate(() => redirectUnauthorizedTo(['/home'])),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -12,4 +12,10 @@
   </ion-header>
 
   <ion-button (click)="onLoggout()">Loggout</ion-button>
+
+  <ng-container *ngIf="$user | async as user">
+    Your user:<ion-text>{{user.email}}</ion-text>
+
+    <ion-button routerLink="/trainings">Trainning</ion-button>
+  </ng-container>
 </ion-content>

@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mis entrenamientos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  Lista de entrenamientos ...
+  <ion-button (click)="openTrainingModal()">Añadir entrenamiento</ion-button>
+
+  <div *ngFor="let training of trainings">
+    <app-training [training]="training"></app-training>
+  </div>
+</ion-content>

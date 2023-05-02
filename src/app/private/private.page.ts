@@ -1,6 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users/services/users.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
+import { User } from '../users/models/user';
 
 @Component({
   selector: 'app-private',
@@ -8,9 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./private.page.scss'],
 })
 export class PrivatePage implements OnInit {
-  userService = inject(UsersService);
+  $user = this.userService.$stateSession.pipe(map((user) => user));
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly userService: UsersService
+  ) {}
 
   ngOnInit() {}
 

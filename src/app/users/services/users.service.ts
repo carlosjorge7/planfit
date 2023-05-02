@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  authState,
 } from '@angular/fire/auth';
 import { User } from '../models/user';
 
@@ -14,6 +15,8 @@ import { User } from '../models/user';
 })
 export class UsersService {
   constructor(private readonly auth: Auth) {}
+
+  $stateSession = authState(this.auth);
 
   public register(user: User) {
     return createUserWithEmailAndPassword(this.auth, user.email, user.password);
