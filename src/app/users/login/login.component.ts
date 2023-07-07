@@ -12,12 +12,20 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   form!: FormGroup;
 
-  userService = inject(UsersService);
-
-  constructor(private fb: FormBuilder, private readonly router: Router) {}
+  private readonly userService = inject(UsersService);
+  private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  /**
+   * To init form
+   */
+  private initForm(): void {
     this.form = this.fb.group({
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -25,19 +33,9 @@ export class LoginComponent {
 
   onSubmit() {
     const user = this.form.value as User;
-    this.userService
-      .login(user)
-      .then(() => this.router.navigate(['/private']))
-      .catch((err) => console.log(err));
-  }
-
-  onLoginGoogle() {
-    this.userService
-      .loginWithGoogle()
-      .then((res) => {
-        console.log(res);
-        this.router.navigate(['/private']);
-      })
-      .catch((err) => console.log(err));
+    console.log(user);
+    this.userService.create(user).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

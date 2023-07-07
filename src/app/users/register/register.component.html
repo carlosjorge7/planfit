@@ -1,13 +1,24 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <ion-item>
-    <ion-label>Email</ion-label>
-    <ion-input formControlName="email" type="email"></ion-input>
-  </ion-item>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/users"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input formControlName="password" type="password"></ion-input>
-  </ion-item>
+<ion-content>
+  <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
 
-  <ion-button expand="block" type="submit">Registrar</ion-button>
-</form>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit">Registrar</ion-button>
+  </form> -->
+</ion-content>

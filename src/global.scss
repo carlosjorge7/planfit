@@ -25,15 +25,8 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-ion-toolbar {
-  --ion-background-color: #3a9e47; /* Cambia el color de fondo según tus preferencias */
-  --ion-text-color: #000000; /* Cambia el color del texto según tus preferencias */
-}
-
 /* Estilos globales para los botones */
 ion-button {
-  background-color: #000000; /* Cambia el color de fondo según tus preferencias */
-  color: #ffffff; /* Cambia el color del texto según tus preferencias */
-  border-radius: 8px; /* Cambia el radio del borde según tus preferencias */
-  padding: 10px 20px; /* Cambia el espaciado interno según tus preferencias */
+  border-radius: 20px; /* Cambia el radio del borde según tus preferencias */
+  padding: 2px 20px; /* Cambia el espaciado interno según tus preferencias */
 }

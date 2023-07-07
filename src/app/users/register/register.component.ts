@@ -23,11 +23,11 @@ export class RegisterComponent {
     });
   }
 
-  onSubmit() {
-    const newUser = this.form.value as User;
-    this.userService
-      .register(newUser)
-      .then(() => this.router.navigate(['users/login']))
-      .catch((err) => console.log(err));
-  }
+  // onSubmit() {
+  //   const newUser = this.form.value as User;
+  //   this.userService
+  //     .register(newUser)
+  //     .then(() => this.router.navigate(['users/login']))
+  //     .catch((err) => console.log(err));
+  // }
 }

@@ -1,36 +1,16 @@
-import { Injectable } from '@angular/core';
-import {
-  Auth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  signInWithPopup,
-  GoogleAuthProvider,
-  authState,
-} from '@angular/fire/auth';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private readonly auth: Auth) {}
+  private readonly http = inject(HttpClient);
 
-  $stateSession = authState(this.auth);
-
-  public register(user: User) {
-    return createUserWithEmailAndPassword(this.auth, user.email, user.password);
-  }
-
-  public login(user: User) {
-    return signInWithEmailAndPassword(this.auth, user.email, user.password);
-  }
-
-  public loginWithGoogle() {
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
-  }
-
-  public loggout() {
-    return signOut(this.auth);
+  public create(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.apiHost}/users/`, user);
   }
 }
