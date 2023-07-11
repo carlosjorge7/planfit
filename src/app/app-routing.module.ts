@@ -17,13 +17,11 @@ const routes: Routes = [
     path: 'private',
     loadChildren: () =>
       import('./private/private.module').then((m) => m.PrivatePageModule),
-    ...canActivate(() => redirectUnauthorizedTo(['/home'])),
   },
   {
     path: 'trainings',
     loadChildren: () =>
       import('./trainings/trainings.module').then((m) => m.TrainingsPageModule),
-    ...canActivate(() => redirectUnauthorizedTo(['/home'])),
   },
   {
     path: '',

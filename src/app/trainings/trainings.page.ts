@@ -11,15 +11,15 @@ import { Training } from './models/training';
 })
 export class TrainingsPage implements OnInit {
   trainingService = inject(TrainingsService);
-  trainings: Training[] = [];
+  trainings: Training[] = [
+    { id: 'string', name: 'string', description: 'string' },
+    { id: 'string', name: 'string', description: 'string' },
+    { id: 'string', name: 'string', description: 'string' },
+  ];
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit(): void {
-    this.trainingService
-      .getAll()
-      .subscribe((trainings) => (this.trainings = trainings));
-  }
+  ngOnInit(): void {}
 
   async openTrainingModal() {
     const modal = await this.modalCtrl.create({

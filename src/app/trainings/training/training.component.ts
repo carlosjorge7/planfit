@@ -17,8 +17,8 @@ export class TrainingComponent {
   constructor(private modalCtrl: ModalController) {}
 
   async onDelete(training: Training) {
-    const res = await this.trainingService.delete(training);
-    console.log(res);
+    // const res = await this.trainingService.delete(training);
+    // console.log(res);
   }
 
   async onUpdate(training: Training) {

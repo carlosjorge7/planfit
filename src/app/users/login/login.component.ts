@@ -30,6 +30,7 @@ export class LoginComponent {
       .pipe(first())
       .subscribe((res) => {
         console.log(res);
+        this.router.navigate(['/trainings']);
       });
   }
 

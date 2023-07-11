@@ -48,8 +48,8 @@ export class TrainingModalComponent implements OnInit {
           description: this.trainingForm.value.description,
         };
 
-        const res = await this.trainingService.update(updateTraining);
-        console.log(res);
+        // const res = await this.trainingService.update(updateTraining);
+        // console.log(res);
 
         this.modalCtrl.dismiss(updateTraining);
       } else {
@@ -57,8 +57,8 @@ export class TrainingModalComponent implements OnInit {
           name: this.trainingForm.value.name,
           description: this.trainingForm.value.description,
         };
-        const res = await this.trainingService.create(newTraining);
-        console.log(res);
+        // const res = await this.trainingService.create(newTraining);
+        // console.log(res);
 
         this.modalCtrl.dismiss(newTraining);
       }
