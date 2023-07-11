@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UsersService {
+  accessToken: Token = {} as Token;
+
   private readonly http = inject(HttpClient);
 
   /**
@@ -43,5 +45,13 @@ export class UsersService {
     return this.http.post<Token>(`${environment.apiHost}token/refresh/`, {
       refresh: refresh,
     });
+  }
+
+  setToken(credentials: Token) {
+    this.accessToken = credentials;
+  }
+
+  getToken() {
+    return this.accessToken;
   }
 }

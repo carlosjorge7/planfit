@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { TrainingModalComponent } from './training-modal/training-modal.component';
 import { TrainingsService } from './services/trainings.service';
 import { Training } from './models/training';
+import { UsersService } from '../users/services/users.service';
 
 @Component({
   selector: 'app-trainings',
@@ -10,7 +11,10 @@ import { Training } from './models/training';
   styleUrls: ['./trainings.page.scss'],
 })
 export class TrainingsPage implements OnInit {
-  trainingService = inject(TrainingsService);
+  private readonly trainingService = inject(TrainingsService);
+
+  private readonly userService = inject(UsersService);
+
   trainings: Training[] = [
     { id: 'string', name: 'string', description: 'string' },
     { id: 'string', name: 'string', description: 'string' },
@@ -19,7 +23,12 @@ export class TrainingsPage implements OnInit {
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.userService.getToken());
+    this.trainingService.getTrainings().subscribe((res) => {
+      console.log(res);
+    });
+  }
 
   async openTrainingModal() {
     const modal = await this.modalCtrl.create({

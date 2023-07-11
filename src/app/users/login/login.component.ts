@@ -29,7 +29,7 @@ export class LoginComponent {
       .login(user)
       .pipe(first())
       .subscribe((res) => {
-        console.log(res);
+        this.userService.setToken(res);
         this.router.navigate(['/trainings']);
       });
   }
