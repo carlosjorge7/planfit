@@ -15,11 +15,7 @@ export class TrainingsPage implements OnInit {
 
   private readonly userService = inject(UsersService);
 
-  trainings: Training[] = [
-    { id: 'string', name: 'string', description: 'string' },
-    { id: 'string', name: 'string', description: 'string' },
-    { id: 'string', name: 'string', description: 'string' },
-  ];
+  trainings: Training[] = [];
 
   constructor(private modalCtrl: ModalController) {}
 
@@ -27,6 +23,7 @@ export class TrainingsPage implements OnInit {
     console.log(this.userService.getToken());
     this.trainingService.getTrainings().subscribe((res) => {
       console.log(res);
+      this.trainings = res;
     });
   }
 

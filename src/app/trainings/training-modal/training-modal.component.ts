@@ -24,7 +24,7 @@ export class TrainingModalComponent implements OnInit {
 
   ngOnInit() {
     this.trainingForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      title: ['', Validators.required],
       description: ['', Validators.required],
     });
 
@@ -44,7 +44,7 @@ export class TrainingModalComponent implements OnInit {
       if (this.isUpdate) {
         const updateTraining: Training = {
           id: this.training?.id,
-          name: this.trainingForm.value.name,
+          title: this.trainingForm.value.title,
           description: this.trainingForm.value.description,
         };
 
@@ -54,11 +54,12 @@ export class TrainingModalComponent implements OnInit {
         this.modalCtrl.dismiss(updateTraining);
       } else {
         const newTraining: Training = {
-          name: this.trainingForm.value.name,
+          title: this.trainingForm.value.title,
           description: this.trainingForm.value.description,
         };
-        // const res = await this.trainingService.create(newTraining);
-        // console.log(res);
+        this.trainingService.createTraining(newTraining).subscribe((res) => {
+          console.log(res);
+        });
 
         this.modalCtrl.dismiss(newTraining);
       }
