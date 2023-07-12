@@ -48,10 +48,10 @@ export class UsersService {
   }
 
   setToken(credentials: Token) {
-    this.accessToken = credentials;
+    localStorage.setItem('token', credentials.access);
   }
 
   getToken() {
-    return this.accessToken;
+    return localStorage.getItem('token');
   }
 }
